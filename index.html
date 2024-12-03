@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonard's Cause</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1d1f27;
+            color: #e0e0e0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .header:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 70%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .flex-container > div {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            cursor: pointer;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .flex-container > div:hover {
+            transform: scale(1.05);
+        }
+
+        .flex-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            width: 80%;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 2;
+        }
+
+        .div1 {
+            background-image: url('Joy.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .div2 {
+            background-image: url('Excitement.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .div3 {
+            background-image: url('Sadness.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .div4 {
+            background-image: url('Anger.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .active .flex-title {
+            opacity: 1;
+        }
+
+        .active .description {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .active {
+            flex: 4;
+            transform: scale(1.2);
+        }
+
+        .inactive {
+            flex: 1;
+            opacity: 0.6;
+            transform: scale(0.8);
+        }
+
+        .flex-container > div:not(.active) {
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 1.8rem;
+                padding: 10px;
+            }
+
+            .flex-container {
+                flex-direction: column;
+                height: auto;
+                gap: 20px;
+            }
+
+            .flex-title {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 0.9rem;
+            }
+
+            .flex-container > div {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                font-size: 1.5rem;
+            }
+
+            .flex-title {
+                font-size: 1.2rem;
+            }
+
+            .description {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const divs = document.querySelectorAll(".flex-container > div");
+
+            divs.forEach(div => {
+                div.addEventListener("click", () => {
+                    const isActive = div.classList.contains("active");
+
+                    // Remove 'active' and 'inactive' classes from all divs
+                    divs.forEach(d => {
+                        d.classList.remove("active");
+                        d.classList.add("inactive");
+                    });
+
+                    // Toggle the active class
+                    if (!isActive) {
+                        div.classList.add("active");
+                        div.classList.remove("inactive");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">Jonard's Cause</div>
+    <div class="flex-container">
+        <div class="div1">
+            <div class="flex-title">Joy</div>
+            <div class="description">Jonard feels immense joy when he is with his friends. Their shared moments and laughter uplift him and fill his heart with happiness. The connection with his friends brings out the best in him.</div>
+        </div>
+        <div class="div2">
+            <div class="flex-title">Excitement</div>
+            <div class="description">The thrill of new adventures with his friends excites Jonard. Whether it's the rush of excitement on trips or the joy of planning together, these moments fill him with energy and joy.</div>
+        </div>
+        <div class="div3">
+            <div class="flex-title">Sadness</div>
+            <div class="description">But when Jonard is alone, a deep sadness sets in. His insecurities weigh him down, making him question his worth. It's a battle he faces within, where his own mind becomes a prison.</div>
+        </div>
+        <div class="div4">
+            <div class="flex-title">Anger</div>
+            <div class="description">Jonard’s anger often comes from within. His frustration with himself, his struggles with self-image, and the pressure to meet expectations all fuel his anger. It’s an inner conflict he tries to overcome.</div>
+        </div>
+    </div>
+</body>
+
+</html>
